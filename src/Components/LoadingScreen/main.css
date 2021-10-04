@@ -1,0 +1,62 @@
+.Loadingmenu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: #000000;
+}
+
+.mid-panel {
+	margin-top: 15%;
+}
+
+.personal-image {
+	height: 25vh;
+	width: auto;
+	border-radius: 50%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.words-block {
+	margin-top: 2.5vh;
+	text-align: center;
+}
+
+.tiny-tile {
+	position: relative;
+	left: -6vw;
+	color: #ffffff;
+	font-size: 2vh;
+}
+
+.main-title {
+	color: #e3e1de;
+	font-weight: bold;
+	font-size: 4.3vh;
+}
+
+@media only screen and (max-width: 600px) {
+
+.mid-panel {
+	margin-top: 30%;
+}
+
+.personal-image {
+	height: 20vh;
+	width: auto;
+	border-radius: 50%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tiny-tile {
+	position: relative;
+	left: -12vw;
+	color: #ffffff;
+	font-size: 2vh;
+}
+}
