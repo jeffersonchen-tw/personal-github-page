@@ -4,9 +4,11 @@ const LoadingBar = () => {
 	return (
 		<div className="container">
 		<div className="bar">
-		<div className="sub-block" />
+			<div className="block-parent">
 			<div className="sub-block" />
 			<div className="sub-block" />
+			<div className="sub-block" />
+			</div>
 		</div>
 		</div>
 		)

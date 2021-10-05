@@ -12,6 +12,17 @@
 	background-color: rgb(233, 233, 233);
 	border: solid;
 	border-radius: 6vw;
+	overflow: hidden;
+}
+
+.block-parent {
+	display: flex;
+	align-items: center;
+	animation: moveforward 2.2s ease-in;
+}
+@keyframes moveforward {
+	0% {margin-left: 0%}
+	100% {margin-left: 100%}
 }
 
 .sub-block {
