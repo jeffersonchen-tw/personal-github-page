@@ -1,0 +1,14 @@
+
+.main-menu {
+	height: 100vh;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("../../img/bg.jpg");
+	background-size: cover;
+	resize: both;
+	overflow: hidden;
+}
+
+.folder-panel {
+	float: left;
+	margin-left: 3vw;
+	margin-top: 3vh;
+}

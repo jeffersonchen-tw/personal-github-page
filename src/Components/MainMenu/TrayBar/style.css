@@ -1,0 +1,21 @@
+
+.footer {
+	display: flex;
+	align-items: center;
+	height: 4vh;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: #3861d7;
+}
+
+.power-botton {
+	margin-left: 1vw;
+}
+
+@media only screen and (max-width: 680px) {
+.power-botton {
+	margin-left: 2vw;
+}
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom"
 import LoadingBar from './LoadingBar'
-import './main.css'
+import './style.css'
 import personalImage from '../../img/me.JPG'
 
 const LoadingScreen = () => {
