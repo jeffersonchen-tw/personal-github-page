@@ -8,7 +8,7 @@
 }
 
 .mid-panel {
-	margin-top: 15%;
+	margin-top: 13%;
 }
 
 .personal-image {
@@ -33,10 +33,25 @@
 }
 
 .main-title {
-	color: #e3e1de;
+	color: #ffffff;
 	font-weight: bold;
-	font-size: 4.3vh;
+	font-size: 4.8vh;
 }
+
+.intro {
+	color: #ffffff;
+	position: absolute;
+	display: flex;
+	bottom: 6vh;
+	left: 50%;
+	transform: translate(-50%, 0%);
+}
+
+.intro span {
+	font-size: 2.8vh;
+	font-weight: bold;
+}
+
 
 @media only screen and (max-width: 600px) {
 
@@ -58,5 +73,10 @@
 	left: -12vw;
 	color: #ffffff;
 	font-size: 2vh;
+}
+
+.intro span {
+	font-size: 2vh;
+	font-weight: bold;
 }
 }
