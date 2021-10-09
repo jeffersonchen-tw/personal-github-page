@@ -1,9 +1,22 @@
+import React, { useState } from "react";
 import "./style.css";
 
 const LinkFolder = (props) => {
+  const [open, setOpen] = useState(0);
+
+  function handleClick() {
+    if (open === 1) {
+      setOpen(0);
+    } else {
+      setOpen(1);
+    }
+  }
+
   return (
     <div className="container">
-      <div className="folder"></div>
+      <div className="folder" onClick={handleClick}>
+        <div className="cover" opened={open}/>
+      </div>
       <div className="title">
         <h3>{props.title}</h3>
       </div>

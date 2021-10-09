@@ -6,7 +6,7 @@ const TrayBar = () => {
   return (
     <div className="footer">
       <div className="power-botton">
-        <FaPowerOff style={{ color: "#e3e1de" }} />
+        <FaPowerOff style={{ color: "#000000" }} />
       </div>
       <div className="clock">
         <Clock />
