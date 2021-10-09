@@ -15,7 +15,8 @@ const LinkFolder = (props) => {
   return (
     <div className="container">
       <div className="folder" onClick={handleClick}>
-        <div className="cover" opened={open}/>
+        <div className="cover" opened={open} />
+        <div className="paper" />
       </div>
       <div className="title">
         <h3>{props.title}</h3>
