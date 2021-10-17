@@ -1,5 +1,6 @@
 import TrayBar from "./TrayBar";
 import LinkFolder from "./LinkFolder";
+import WindowPanel from "./WindowPanel";
 import "./style.css";
 
 const MainMenu = () => {
@@ -11,6 +12,7 @@ const MainMenu = () => {
           <LinkFolder title="My Projects" />
           <LinkFolder title="Contact" />
         </div>
+        <WindowPanel title="About Me" id="about"/>
       </div>
       <TrayBar />
     </div>

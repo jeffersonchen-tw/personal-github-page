@@ -2,12 +2,12 @@
 .footer {
 	display: flex;
 	align-items: center;
-	height: 2.8vh;
+	height: 4.8vh;
 	position: fixed;
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	background-color: #a6bafc;
+	background-color: #3d4143;
 }
 
 .power-botton {
