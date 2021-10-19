@@ -1,5 +1,32 @@
+.bar-container {
+  display: flex;
+  height: 2vw;
+  background-color: #d3d3d3;
+}
 
 .title {
-    color: #ffffff;
-    font-weight: bold;
+  color: #2c2828;
+  font-size: 1em;
+  font-weight: 750;
+  margin-left: 0.5em;
+}
+
+.box {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+@media only screen and (max-width: 600px) {
+  .bar-container {
+    display: flex;
+    align-items: center;
+    height: 2vh;
+    background-color: #d3d3d3;
+  }
+
+  .title {
+    color: #2c2828;
+    font-size: 1.5vh;
+    font-weight: 750;
+    margin-left: 0.5em;
+  }
 }

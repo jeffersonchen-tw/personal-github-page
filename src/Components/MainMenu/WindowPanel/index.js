@@ -1,50 +1,66 @@
 import TitleBar from "./TitleBar";
-import "./style.css";
 import { useState, useEffect, useRef } from "react";
 
-const panelStyle = {
-    position: 'absolute',
-    width: '45vw',
-    height: '40vw',
-    borderRadius: '2px',
-    zIndex: 5,
-    backgroundColor: '#262a28',
-    border: '1.5px solid #d3d3d3',
-    '@media (max-width: 500px)': {
-    },
-}
+const pcPanelStyle = {
+  position: "absolute",
+  width: "75vw",
+  height: "50vw",
+  borderRadius: "2px",
+  zIndex: 5,
+  backgroundColor: "#262a28",
+  border: "2px solid #d3d3d3",
+};
+const mobilePanelStyle = {
+  position: "absolute",
+  width: "60vh",
+  height: "60vh",
+  borderRadius: "2px",
+  zIndex: 5,
+  backgroundColor: "#262a28",
+  border: "1.5px solid #d3d3d3",
+};
 
 const WindowPanel = (props) => {
+  const detectWindow = () => {
+    const isMobileDevice = window.matchMedia("(max-width: 600px)").matches;
+    return isMobileDevice
+  }
+  window.addEventListener("resize", () => {
+    setIsMobile(detectWindow);
+  })
+  const [isMobile, setIsMobile] = useState(detectWindow);
   const [pressed, setPressed] = useState(false);
-  const [position, setPosition] = useState({ x:0, y:0});
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const ref = useRef();
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.style.transform = `translate(${position.x}px, ${position.y}px`
+      ref.current.style.transform = `translate(${position.x}px, ${position.y}px`;
     }
-    return () => {
-    }
-  }, [position])
+    return () => {};
+  }, [position]);
 
   const mouseMove = (event) => {
     if (pressed) {
       setPosition({
         x: position.x + event.movementX,
-        y: position.y + event.movementY
-      })
+        y: position.y + event.movementY,
+      });
     }
-  }
+  };
   return (
-    <div className="window"
-    ref={ ref }
-    style={ panelStyle }
-    onMouseMove={mouseMove}
-    onMouseDown={() => setPressed(true)}
-    onMouseUp={() => setPressed(false)}
+    <div
+      className="window"
+      ref={ref}
+      style={isMobile ? mobilePanelStyle : pcPanelStyle}
+      onMouseMove={mouseMove}
+      onMouseDown={() => setPressed(true)}
+      onMouseUp={() => setPressed(false)}
     >
       <TitleBar title={props.title} />
-      <p style={{color: '#ffffff'}}>{ pressed ? "Dragging..." : "Press to drag" }</p>
+      <p style={{ color: "#ffffff" }}>
+        {pressed ? "Dragging..." : "Press to drag"}
+      </p>
     </div>
   );
 };
