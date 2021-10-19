@@ -12,7 +12,7 @@ const MainMenu = () => {
           <LinkFolder title="My Projects" />
           <LinkFolder title="Contact" />
         </div>
-        <WindowPanel title="About Me" id="about"/>
+        <WindowPanel title="About Me" />
       </div>
       <TrayBar />
     </div>

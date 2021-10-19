@@ -1,9 +1,8 @@
-
 .window {
     position: absolute;
     z-index: 5;
-    width: 40vw;
-    height: 35vw;
+    width: 45vw;
+    height: 40vw;
     background-color: #262a28;
     border: 1.5px solid #d3d3d3;
     border-radius: 2px;
