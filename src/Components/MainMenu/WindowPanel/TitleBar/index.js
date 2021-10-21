@@ -1,10 +1,15 @@
+import { IoCloseSharp } from "react-icons/io5"
 import './style.css';
 
 const TitleBar = (props) => {
     return (
         <div className="bar-container">
-            <div className="box">
             <span className="title">{props.title}</span>
+            <div className="close-btn">
+                <IoCloseSharp style={{
+                    color: '#e8e6e3',
+                    height: '5em'
+                }}/>
             </div>
         </div>
     )

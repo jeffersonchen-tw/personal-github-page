@@ -1,6 +1,7 @@
 import TitleBar from "./TitleBar";
 import { useState, useEffect, useRef } from "react";
 
+// TODO: change the initial window position
 const pcPanelStyle = {
   position: "absolute",
   width: "75vw",
