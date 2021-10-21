@@ -1,27 +1,27 @@
 import TitleBar from "./TitleBar";
 import { useState, useEffect, useRef } from "react";
 
-// TODO: change the initial window position
-const pcPanelStyle = {
-  position: "absolute",
-  width: "75vw",
-  height: "50vw",
-  borderRadius: "2px",
-  zIndex: 5,
-  backgroundColor: "#262a28",
-  border: "2px solid #d3d3d3",
-};
-const mobilePanelStyle = {
-  position: "absolute",
-  width: "60vh",
-  height: "60vh",
-  borderRadius: "2px",
-  zIndex: 5,
-  backgroundColor: "#262a28",
-  border: "1.5px solid #d3d3d3",
-};
-
 const WindowPanel = (props) => {
+  // TODO: change the initial window position
+  const pcPanelStyle = {
+    position: "absolute",
+    width: "75vw",
+    height: "50vw",
+    borderRadius: "2px",
+    zIndex: 5,
+    backgroundColor: "#262a28",
+    border: "2px solid #d3d3d3",
+  };
+  const mobilePanelStyle = {
+    position: "absolute",
+    width: "50vh",
+    height: "80vh",
+    borderRadius: "2px",
+    zIndex: 5,
+    backgroundColor: "#262a28",
+    border: "1.5px solid #d3d3d3",
+  };
+
   const detectWindow = () => {
     const isMobileDevice = window.matchMedia("(max-width: 600px)").matches;
     return isMobileDevice
@@ -38,7 +38,7 @@ const WindowPanel = (props) => {
     if (ref.current) {
       ref.current.style.transform = `translate(${position.x}px, ${position.y}px`;
     }
-    return () => {};
+    return () => { };
   }, [position]);
 
   const mouseMove = (event) => {
