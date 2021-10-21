@@ -13,7 +13,7 @@ const LinkFolder = (props) => {
   }
 
   return (
-    <div className="container">
+    <div className="container" onClick={props.openWindowHandler}>
       <div className="folder" onClick={handleClick}>
         <div className="cover" opened={open} />
         <div className="paper" />
