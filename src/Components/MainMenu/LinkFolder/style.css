@@ -28,7 +28,7 @@
   z-index: 2;
 }
 
-.cover[opened="1"] {
+.cover[opened="true"] {
   animation-name: openFolder;
   animation-duration: 0.2s;
   animation-fill-mode: forwards;

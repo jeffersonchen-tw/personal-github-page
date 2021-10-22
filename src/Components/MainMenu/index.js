@@ -2,43 +2,54 @@ import TrayBar from "./TrayBar";
 import LinkFolder from "./LinkFolder";
 import WindowPanel from "./WindowPanel";
 import "./style.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const MainMenu = () => {
+  // window handling
+  // TODO: using ref to close folder when clicking closing button on window
+  const aboutRef = useRef();
+  const projRef = useRef();
+  const contactRef = useRef();
+  // window opening
   const [showAbout, setShowAbout] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
   const [showContact, setShowContact] = useState(false);
-  const openDetailWindow = (index) => {
+  const toggleDetailWindow = (index) => {
     if (index === 0) {
-      setShowAbout(true);
+      setShowAbout(!showAbout);
     } else if (index === 1) {
-      setShowProjects(true);
+      setShowProjects(!showProjects);
     } else {
-      setShowContact(true);
+      setShowContact(!showContact);
     }
   }
+
   return (
     <div>
       <div className="main-menu">
         <div className="folder-panel">
-          <LinkFolder title="About Me" openWindowHandler={
-            () => {
-              openDetailWindow(0)
-            }}/>
-          <LinkFolder title="My Projects" openWindowHandler={
-            () => {
-              openDetailWindow(1)
-            }
-          }/>
-          <LinkFolder title="Contact" openWindowHandler={
-            () => {
-              openDetailWindow(2)
-            }
-          }/>
+          <LinkFolder ref={aboutRef} title="About Me" openWindowHandler={
+            () => toggleDetailWindow(0)} />
+          <LinkFolder ref={projRef} title="My Projects" openWindowHandler={
+            () => toggleDetailWindow(1)} />
+          <LinkFolder ref={contactRef} title="Contact" openWindowHandler={
+            () => toggleDetailWindow(2)} />
         </div>
-        { showAbout && <WindowPanel title="About Me" />}
-        { showProjects && <WindowPanel title="My Projects" />}
-        { showContact && <WindowPanel title="Contact" />}
+        {showAbout && <WindowPanel title="About Me" closeWindowHandler={
+          () => {
+            toggleDetailWindow(0)
+            aboutRef.current.closeByCloseButton(false);
+          }} />}
+        {showProjects && <WindowPanel title="My Projects" closeDetailWindow={
+          () => {
+            toggleDetailWindow(1)
+            projRef.current.closeByCloseButton(false);
+          }} />}
+        {showContact && <WindowPanel title="Contact" closeDetailWindow={
+          () => {
+            toggleDetailWindow(2)
+            contactRef.current.closeByCloseButton(false);
+          }} />}
       </div>
       <TrayBar />
     </div>

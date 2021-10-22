@@ -1,21 +1,26 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState, useImperativeHandle } from "react";
 import "./style.css";
 
-const LinkFolder = (props) => {
-  const [open, setOpen] = useState(0);
+const LinkFolder = forwardRef((props, ref) => {
+  const [open, setOpen] = useState(false);
 
-  function handleClick() {
-    if (open === 1) {
-      setOpen(0);
-    } else {
-      setOpen(1);
-    }
+  function handleClickOnFolder() {
+    // function from parent
+    props.openWindowHandler()
+    setOpen(!open)
   }
+  // close folder when clicking on close button on titlebar of window
+  useImperativeHandle(ref, () => ({
+    closeByCloseButton(closed) {
+      console.log("close the folder");
+      setOpen(closed);
+    }
+  }),[])
 
   return (
-    <div className="container" onClick={props.openWindowHandler}>
-      <div className="folder" onClick={handleClick}>
-        <div className="cover" opened={open} />
+    <div className="container">
+      <div className="folder" onClick={handleClickOnFolder}>
+        <div className="cover" opened={open.toString()} />
         <div className="paper" />
       </div>
       <div className="title">
@@ -23,6 +28,6 @@ const LinkFolder = (props) => {
       </div>
     </div>
   );
-};
+});
 
 export default LinkFolder;

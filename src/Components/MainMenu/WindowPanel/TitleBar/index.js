@@ -5,7 +5,7 @@ const TitleBar = (props) => {
     return (
         <div className="bar-container">
             <span className="title">{props.title}</span>
-            <div className="close-btn">
+            <div className="close-btn" onClick={props.closeWindowHandler}>
                 <IoCloseSharp style={{
                     color: '#e8e6e3',
                     height: '5em'
