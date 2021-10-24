@@ -59,9 +59,7 @@ const WindowPanel = (props) => {
       onMouseUp={() => setPressed(false)}
     >
       <TitleBar title={props.title} closeWindowHandler={props.closeWindowHandler}/>
-      <p style={{ color: "#ffffff" }}>
-        {pressed ? "Dragging..." : "Press to drag"}
-      </p>
+      { props.innerView }
     </div>
   );
 };

@@ -1,12 +1,15 @@
 import TrayBar from "./TrayBar";
 import LinkFolder from "./LinkFolder";
 import WindowPanel from "./WindowPanel";
+import AboutWindow from "./src/AboutWindow";
+import ProjectWindow from "./src/ProjectWindow";
+import ContactWindow from "./src/ContactWindow";
 import "./style.css";
 import { useState, useRef } from "react";
 
 const MainMenu = () => {
   // window handling
-  // TODO: using ref to close folder when clicking closing button on window
+  // using ref to close folder when clicking closing button on window
   const aboutRef = useRef();
   const projRef = useRef();
   const contactRef = useRef();
@@ -35,17 +38,19 @@ const MainMenu = () => {
           <LinkFolder ref={contactRef} title="Contact" openWindowHandler={
             () => toggleDetailWindow(2)} />
         </div>
-        {showAbout && <WindowPanel title="About Me" closeWindowHandler={
+        {showAbout && <WindowPanel title="About Me" innerView={<AboutWindow />} closeWindowHandler={
           () => {
             toggleDetailWindow(0)
             aboutRef.current.closeByCloseButton(false);
           }} />}
-        {showProjects && <WindowPanel title="My Projects" closeDetailWindow={
-          () => {
-            toggleDetailWindow(1)
-            projRef.current.closeByCloseButton(false);
-          }} />}
-        {showContact && <WindowPanel title="Contact" closeDetailWindow={
+        {showProjects && <WindowPanel title="My Projects" innerView={<ProjectWindow />}
+          closeDetailWindow={
+            () => {
+              toggleDetailWindow(1)
+              projRef.current.closeByCloseButton(false);
+            }} />}
+        {showContact && <WindowPanel title="Contact" innerView={<ContactWindow />
+        } closeDetailWindow={
           () => {
             toggleDetailWindow(2)
             contactRef.current.closeByCloseButton(false);
