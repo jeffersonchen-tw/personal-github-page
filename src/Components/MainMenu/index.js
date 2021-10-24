@@ -38,23 +38,24 @@ const MainMenu = () => {
           <LinkFolder ref={contactRef} title="Contact" openWindowHandler={
             () => toggleDetailWindow(2)} />
         </div>
-        {showAbout && <WindowPanel title="About Me" innerView={<AboutWindow />} closeWindowHandler={
-          () => {
-            toggleDetailWindow(0)
-            aboutRef.current.closeByCloseButton(false);
-          }} />}
+        {showAbout && <WindowPanel title="About Me" innerView={<AboutWindow />}
+          closeWindowHandler={
+            () => {
+              toggleDetailWindow(0)
+              aboutRef.current.closeByCloseButton(false);
+            }} />}
         {showProjects && <WindowPanel title="My Projects" innerView={<ProjectWindow />}
-          closeDetailWindow={
+          closeWindowHandler={
             () => {
               toggleDetailWindow(1)
               projRef.current.closeByCloseButton(false);
             }} />}
-        {showContact && <WindowPanel title="Contact" innerView={<ContactWindow />
-        } closeDetailWindow={
-          () => {
-            toggleDetailWindow(2)
-            contactRef.current.closeByCloseButton(false);
-          }} />}
+        {showContact && <WindowPanel title="Contact" innerView={<ContactWindow />}
+          closeWindowHandler={
+            () => {
+              toggleDetailWindow(2)
+              contactRef.current.closeByCloseButton(false);
+            }} />}
       </div>
       <TrayBar />
     </div>
