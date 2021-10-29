@@ -1,8 +1,11 @@
 import TitleBar from "./TitleBar";
-import { useState, useEffect, useRef } from "react";
+import {
+  useState, useEffect, useRef,
+} from "react";
 
 const WindowPanel = (props) => {
-  // TODO: change the initial window position
+  const [firstLoad, setFirstLoad] = useState(true);
+  
   const pcPanelStyle = {
     position: "absolute",
     width: "75vw",
@@ -32,34 +35,54 @@ const WindowPanel = (props) => {
   const [isMobile, setIsMobile] = useState(detectWindow);
   const [pressed, setPressed] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const ref = useRef();
+  //
+  const innerRef = useRef();
+  //
+  const movePosition = (moveX, moveY) => {
+    setPosition({
+      x: position.x + moveX,
+      y: position.y + moveY
+    })
+  }
 
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.style.transform = `translate(${position.x}px, ${position.y}px`;
+  const autoOffsetWindow = (count) => {
+    if (!firstLoad) { return }
+    if (count === 0) {
+      movePosition(0, 0)
+    } else if (count === 1) {
+      movePosition(50, 50)
+    } else {
+      movePosition(80, 80)
+    }
+    setFirstLoad(false);
+  }
+
+
+  useEffect(() => { 
+    autoOffsetWindow(props.count)
+    if (innerRef.current) {
+      innerRef.current.style.transform = `translate(${position.x}px, ${position.y}px`;
     }
     return () => { };
-  }, [position]);
+  });
 
   const mouseMove = (event) => {
     if (pressed) {
-      setPosition({
-        x: position.x + event.movementX,
-        y: position.y + event.movementY,
-      });
+      movePosition(event.movementX, event.movementY)
     }
   };
+
   return (
     <div
       className="window"
-      ref={ref}
+      ref={innerRef}
       style={isMobile ? mobilePanelStyle : pcPanelStyle}
       onMouseMove={mouseMove}
       onMouseDown={() => setPressed(true)}
       onMouseUp={() => setPressed(false)}
     >
-      <TitleBar title={props.title} closeWindowHandler={props.closeWindowHandler}/>
-      { props.innerView }
+      <TitleBar title={props.title} closeWindowHandler={props.closeWindowHandler} />
+      {props.innerView}
     </div>
   );
 };

@@ -10,13 +10,31 @@ import { useState, useRef } from "react";
 const MainMenu = () => {
   // window handling
   // using ref to close folder when clicking closing button on window
-  const aboutRef = useRef();
-  const projRef = useRef();
-  const contactRef = useRef();
+  const aboutFolderRef = useRef();
+  const projFolderRef = useRef();
+  const contactFolderRef = useRef();
   // window opening
   const [showAbout, setShowAbout] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
   const [showContact, setShowContact] = useState(false);
+  //
+  const [openedCount, setOpenedCount] = useState(0);
+  const openWindowHandler = (index) => {
+    toggleDetailWindow(index)
+    setOpenedCount(openedWindow);
+  }
+  //
+  const openedWindow = () => {
+    const countingList = [showAbout, showProjects, showContact];
+    var result = 0;
+    for(var i=0;i<3;i++) {
+      if (countingList[i] === true) {
+        result+=1
+      }
+    }
+    return result;
+  }
+  //
   const toggleDetailWindow = (index) => {
     if (index === 0) {
       setShowAbout(!showAbout);
@@ -31,30 +49,30 @@ const MainMenu = () => {
     <div>
       <div className="main-menu">
         <div className="folder-panel">
-          <LinkFolder ref={aboutRef} title="About Me" openWindowHandler={
-            () => toggleDetailWindow(0)} />
-          <LinkFolder ref={projRef} title="My Projects" openWindowHandler={
-            () => toggleDetailWindow(1)} />
-          <LinkFolder ref={contactRef} title="Contact" openWindowHandler={
-            () => toggleDetailWindow(2)} />
+          <LinkFolder ref={aboutFolderRef} title="About Me" openWindowHandler={
+            () => openWindowHandler(0)} />
+          <LinkFolder ref={projFolderRef} title="My Projects" openWindowHandler={
+            () => openWindowHandler(1)} />
+          <LinkFolder ref={contactFolderRef} title="Contact" openWindowHandler={
+            () => openWindowHandler(2)} />
         </div>
-        {showAbout && <WindowPanel title="About Me" innerView={<AboutWindow />}
+        {showAbout && <WindowPanel count={openedCount} title="About Me" innerView={<AboutWindow />}
           closeWindowHandler={
             () => {
               toggleDetailWindow(0)
-              aboutRef.current.closeByCloseButton(false);
+              aboutFolderRef.current.closeByCloseButton(false);
             }} />}
-        {showProjects && <WindowPanel title="My Projects" innerView={<ProjectWindow />}
+        {showProjects && <WindowPanel count={openedCount} title="My Projects" innerView={<ProjectWindow />}
           closeWindowHandler={
             () => {
               toggleDetailWindow(1)
-              projRef.current.closeByCloseButton(false);
+              projFolderRef.current.closeByCloseButton(false);
             }} />}
-        {showContact && <WindowPanel title="Contact" innerView={<ContactWindow />}
+        {showContact && <WindowPanel count={openedCount} title="Contact" innerView={<ContactWindow />}
           closeWindowHandler={
             () => {
               toggleDetailWindow(2)
-              contactRef.current.closeByCloseButton(false);
+              contactFolderRef.current.closeByCloseButton(false);
             }} />}
       </div>
       <TrayBar />

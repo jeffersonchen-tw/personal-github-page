@@ -12,7 +12,6 @@ const LinkFolder = forwardRef((props, ref) => {
   // close folder when clicking on close button on titlebar of window
   useImperativeHandle(ref, () => ({
     closeByCloseButton(closed) {
-      console.log("close the folder");
       setOpen(closed);
     }
   }),[])
