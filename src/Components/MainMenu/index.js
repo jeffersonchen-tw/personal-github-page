@@ -4,10 +4,17 @@ import WindowPanel from "./WindowPanel";
 import AboutWindow from "./src/AboutWindow";
 import ProjectWindow from "./src/ProjectWindow";
 import ContactWindow from "./src/ContactWindow";
+import PowerButtonPopup from "./PowerButtonPopup"
 import "./style.css";
 import { useState, useRef } from "react";
 
 const MainMenu = () => {
+  // popop menu of power button
+  const [showPowerButtonPopup, setShowPowerButtonPopup] = useState(false);
+  const powerButtonPopupToggler = () => {
+    console.log("clicked")
+    setShowPowerButtonPopup(!showPowerButtonPopup);
+  }
   // window handling
   // using ref to close folder when clicking closing button on window
   const aboutFolderRef = useRef();
@@ -23,7 +30,7 @@ const MainMenu = () => {
     toggleDetailWindow(index)
     setOpenedCount(openedWindow);
   }
-  //
+  // count the opening window
   const openedWindow = () => {
     const countingList = [showAbout, showProjects, showContact];
     var result = 0;
@@ -75,7 +82,10 @@ const MainMenu = () => {
               contactFolderRef.current.closeByCloseButton(false);
             }} />}
       </div>
-      <TrayBar />
+      <div>
+        {showPowerButtonPopup && <PowerButtonPopup />}
+      </div>
+      <TrayBar powerbtnHandler={powerButtonPopupToggler} />
     </div>
   );
 };

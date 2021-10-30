@@ -13,6 +13,9 @@
 .power-botton {
 	margin-left: 1vw;
 }
+.power-botton:hover {
+	cursor: pointer;
+}
 
 .clock {
 	margin-left: auto;

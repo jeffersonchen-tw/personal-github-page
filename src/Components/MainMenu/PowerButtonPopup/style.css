@@ -1,0 +1,14 @@
+
+.menu {
+	background-color: #3d4143;
+	width: 30vw;
+	height: 30vh;
+}
+
+@media only screen and (max-width: 600px) {
+	.menu {
+		background-color: #3d4143;
+		width: 50vw;
+		height: 30vh;
+	}
+}
