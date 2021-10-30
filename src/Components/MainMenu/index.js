@@ -12,7 +12,6 @@ const MainMenu = () => {
   // popop menu of power button
   const [showPowerButtonPopup, setShowPowerButtonPopup] = useState(false);
   const powerButtonPopupToggler = () => {
-    console.log("clicked")
     setShowPowerButtonPopup(!showPowerButtonPopup);
   }
   // window handling
@@ -81,9 +80,7 @@ const MainMenu = () => {
               toggleDetailWindow(2)
               contactFolderRef.current.closeByCloseButton(false);
             }} />}
-      </div>
-      <div>
-        {showPowerButtonPopup && <PowerButtonPopup />}
+      {showPowerButtonPopup && <PowerButtonPopup />}
       </div>
       <TrayBar powerbtnHandler={powerButtonPopupToggler} />
     </div>
