@@ -1,15 +1,16 @@
-import { RiRestartLine } from "react-icons/ri";
+import { FaPowerOff } from "react-icons/fa";
 import "./style.css";
 
 const ShutdownScreen = () => {
 	return (
 		<div className="background">
-			<div className="panel">
-				<div className="restart-btn">
-					<RiRestartLine style={{
-						width: '3vh'
-					}}/>
+			<div className="main-panel">
+				<div className="option-box">
 				</div>
+				<FaPowerOff style={{
+					color: '#c0bdb8',
+					fontSize: '2em'
+				}} />
 			</div>
 		</div>
 	)
