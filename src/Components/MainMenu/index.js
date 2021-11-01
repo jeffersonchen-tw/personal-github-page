@@ -5,20 +5,21 @@ import AboutWindow from "./src/AboutWindow";
 import ProjectWindow from "./src/ProjectWindow";
 import ContactWindow from "./src/ContactWindow";
 import PopupMenu from "./PopupMenu"
-import "./style.css";
+import { Redirect } from "react-router-dom";
 import { useState, useRef } from "react";
+import "./style.css";
 
 const MainMenu = () => {
-  // popop menu of power button
-  const [showPopup, setShowPopup] = useState(false);
-
   // open the popop menu
+  const [showPopup, setShowPopup] = useState(false);
   const popupToggler = () => {
     setShowPopup(!showPopup);
   }
 
   // naviagte to BootScreen
+  const [shutdown, setShutdown] = useState(false);
   const powerbtnHandler = () => {
+    setShutdown(true);
   }
 
   // window handling
@@ -63,6 +64,7 @@ const MainMenu = () => {
 
   return (
     <div>
+      {shutdown && <Redirect to="shutdown" />}
       <div className="main-menu">
         <div className="folder-panel">
           <LinkFolder ref={aboutFolderRef} title="About Me" openWindowHandler={

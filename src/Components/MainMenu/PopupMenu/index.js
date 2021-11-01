@@ -1,10 +1,10 @@
 import './style.css'
 
-const PowerButtonPopup = () => {
+const PopupMenu = () => {
     return (
         <div className="menu">
         </div>
     )
 };
 
-export default PowerButtonPopup;
+export default PopupMenu;
