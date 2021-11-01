@@ -4,21 +4,29 @@ import WindowPanel from "./WindowPanel";
 import AboutWindow from "./src/AboutWindow";
 import ProjectWindow from "./src/ProjectWindow";
 import ContactWindow from "./src/ContactWindow";
-import PowerButtonPopup from "./PowerButtonPopup"
+import PopupMenu from "./PopupMenu"
 import "./style.css";
 import { useState, useRef } from "react";
 
 const MainMenu = () => {
   // popop menu of power button
-  const [showPowerButtonPopup, setShowPowerButtonPopup] = useState(false);
-  const powerButtonPopupToggler = () => {
-    setShowPowerButtonPopup(!showPowerButtonPopup);
+  const [showPopup, setShowPopup] = useState(false);
+
+  // open the popop menu
+  const popupToggler = () => {
+    setShowPopup(!showPopup);
   }
+
+  // naviagte to BootScreen
+  const powerbtnHandler = () => {
+  }
+
   // window handling
   // using ref to close folder when clicking closing button on window
   const aboutFolderRef = useRef();
   const projFolderRef = useRef();
   const contactFolderRef = useRef();
+
   // window opening
   const [showAbout, setShowAbout] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
@@ -29,6 +37,7 @@ const MainMenu = () => {
     toggleDetailWindow(index)
     setOpenedCount(openedWindow);
   }
+
   // count the opening window
   const openedWindow = () => {
     const countingList = [showAbout, showProjects, showContact];
@@ -40,6 +49,7 @@ const MainMenu = () => {
     }
     return result;
   }
+
   //
   const toggleDetailWindow = (index) => {
     if (index === 0) {
@@ -80,9 +90,9 @@ const MainMenu = () => {
               toggleDetailWindow(2)
               contactFolderRef.current.closeByCloseButton(false);
             }} />}
-      {showPowerButtonPopup && <PowerButtonPopup />}
+      {showPopup && <PopupMenu />}
       </div>
-      <TrayBar powerbtnHandler={powerButtonPopupToggler} />
+      <TrayBar powerbtnHandler={powerbtnHandler} />
     </div>
   );
 };
