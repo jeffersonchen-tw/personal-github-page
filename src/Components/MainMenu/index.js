@@ -43,9 +43,9 @@ const MainMenu = () => {
   const openedWindow = () => {
     const countingList = [showAbout, showProjects, showContact];
     var result = 0;
-    for(var i=0;i<3;i++) {
+    for (var i = 0; i < 3; i++) {
       if (countingList[i] === true) {
-        result+=1
+        result += 1
       }
     }
     return result;
@@ -62,41 +62,43 @@ const MainMenu = () => {
     }
   }
 
-  return (
-    <div>
-      {shutdown && <Redirect to="shutdown" />}
-      <div className="main-menu">
-        <div className="folder-panel">
-          <LinkFolder ref={aboutFolderRef} title="About Me" openWindowHandler={
-            () => openWindowHandler(0)} />
-          <LinkFolder ref={projFolderRef} title="My Projects" openWindowHandler={
-            () => openWindowHandler(1)} />
-          <LinkFolder ref={contactFolderRef} title="Contact" openWindowHandler={
-            () => openWindowHandler(2)} />
+  if (shutdown) {
+    return (<Redirect to="shutdown" />)
+  } else {
+    return (
+      <div>
+        <div className="main-menu">
+          <div className="folder-panel">
+            <LinkFolder ref={aboutFolderRef} title="About Me" openWindowHandler={
+              () => openWindowHandler(0)} />
+            <LinkFolder ref={projFolderRef} title="My Projects" openWindowHandler={
+              () => openWindowHandler(1)} />
+            <LinkFolder ref={contactFolderRef} title="Contact" openWindowHandler={
+              () => openWindowHandler(2)} />
+          </div>
+          {showAbout && <WindowPanel count={openedCount} title="About Me" innerView={<AboutWindow />}
+            closeWindowHandler={
+              () => {
+                toggleDetailWindow(0)
+                aboutFolderRef.current.closeByCloseButton(false);
+              }} />}
+          {showProjects && <WindowPanel count={openedCount} title="My Projects" innerView={<ProjectWindow />}
+            closeWindowHandler={
+              () => {
+                toggleDetailWindow(1)
+                projFolderRef.current.closeByCloseButton(false);
+              }} />}
+          {showContact && <WindowPanel count={openedCount} title="Contact" innerView={<ContactWindow />}
+            closeWindowHandler={
+              () => {
+                toggleDetailWindow(2)
+                contactFolderRef.current.closeByCloseButton(false);
+              }} />}
+          {showPopup && <PopupMenu />}
         </div>
-        {showAbout && <WindowPanel count={openedCount} title="About Me" innerView={<AboutWindow />}
-          closeWindowHandler={
-            () => {
-              toggleDetailWindow(0)
-              aboutFolderRef.current.closeByCloseButton(false);
-            }} />}
-        {showProjects && <WindowPanel count={openedCount} title="My Projects" innerView={<ProjectWindow />}
-          closeWindowHandler={
-            () => {
-              toggleDetailWindow(1)
-              projFolderRef.current.closeByCloseButton(false);
-            }} />}
-        {showContact && <WindowPanel count={openedCount} title="Contact" innerView={<ContactWindow />}
-          closeWindowHandler={
-            () => {
-              toggleDetailWindow(2)
-              contactFolderRef.current.closeByCloseButton(false);
-            }} />}
-      {showPopup && <PopupMenu />}
+        <TrayBar powerbtnHandler={powerbtnHandler} />
       </div>
-      <TrayBar powerbtnHandler={powerbtnHandler} />
-    </div>
-  );
-};
-
+    );
+  }
+}
 export default MainMenu;

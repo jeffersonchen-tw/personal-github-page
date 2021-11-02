@@ -6,11 +6,22 @@ const ShutdownScreen = () => {
 		<div className="background">
 			<div className="main-panel">
 				<div className="option-box">
+					<div className="title-bar">
+						<div>Boot Option</div>
+					</div>
+					<div>
+						<ul>
+							<li>resume</li>
+							<li>clear cache</li>
+						</ul>
+					</div>
 				</div>
-				<FaPowerOff style={{
-					color: '#c0bdb8',
-					fontSize: '2em'
-				}} />
+				<div className="power-btn">
+					<FaPowerOff style={{
+						color: '#c0bdb8',
+						fontSize: '1.8em'
+					}} />
+				</div>
 			</div>
 		</div>
 	)
