@@ -29,13 +29,29 @@
   border: #c0bdb8 solid;
 }
 
+.list-container {
+  color: #ffffff;
+  font-family: bitmaps;
+  font-size: 1.5em;
+  font-weight: 300;
+}
+
+.list {
+  list-style: none;
+  padding-left: 3%;
+}
+
+.list li {
+  margin-bottom: 2vh;
+}
+
 .title-bar {
-  height: 6%;
+  height: 10%;
   background-color: #c0bdb8;
   color: #000000;
-  font-size: 1em;
+  font-size: 1.8em;
   font-family: bitmaps;
-  font-weight: 900;
+  font-weight: 950;
   -webkit-font-smoothing: none;
 }
 
@@ -57,8 +73,24 @@
 @media only screen and (max-width: 600px) {
   .option-box {
     top: 30%;
-    width: 70%;
+    width: 75%;
     height: 50%;
     border: #c0bdb8 solid;
+  }
+
+  .title-bar {
+    height: 6%;
+    background-color: #c0bdb8;
+    color: #000000;
+    font-size: 1em;
+    font-family: bitmaps;
+    font-weight: 900;
+    -webkit-font-smoothing: none;
+  }
+
+  .title-bar div {
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 }

@@ -9,9 +9,9 @@ const ShutdownScreen = () => {
 					<div className="title-bar">
 						<div>Boot Option</div>
 					</div>
-					<div>
-						<ul>
-							<li>resume</li>
+					<div className="list-container">
+						<ul className="list">
+							<li className="test" >resume</li>
 							<li>clear cache</li>
 						</ul>
 					</div>
