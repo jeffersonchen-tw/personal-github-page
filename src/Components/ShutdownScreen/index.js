@@ -11,8 +11,9 @@ const ShutdownScreen = () => {
 					</div>
 					<div className="list-container">
 						<ul className="list">
-							<li className="test" >resume</li>
+							<li>resume</li>
 							<li>clear cache</li>
+							<li>send email</li>
 						</ul>
 					</div>
 				</div>
