@@ -57,11 +57,6 @@ const WindowPanel = (props) => {
     setFirstLoad(false);
   }
 
-  // make useState synchronize
-  const handlePressed = (bool) => {
-    setPressed(bool)
-  }
-
   useEffect(() => { 
     autoOffsetWindow(props.count)
     if (innerRef.current) {
@@ -82,9 +77,9 @@ const WindowPanel = (props) => {
       ref={innerRef}
       style={isMobile ? mobilePanelStyle : pcPanelStyle}
       onMouseMove={mouseMove}
-      onMouseDown={() => handlePressed(true)}
-      onMouseUp={() => handlePressed(false)}
-      onMouseLeave={() => handlePressed(false)}
+      onMouseDown={() => setPressed(true)}
+      onMouseUp={() => setPressed(false)}
+      onMouseLeave={() => setPressed(false)}
     >
       <TitleBar title={props.title} closeWindowHandler={props.closeWindowHandler} />
       {props.innerView}
