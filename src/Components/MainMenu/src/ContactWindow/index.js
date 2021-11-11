@@ -1,30 +1,32 @@
 import emailjs from "emailjs-com";
-import EmailConfig  from "../../../../Utils/EmailConfig.js"
-import { useState } from "react";
+import EmailConfig from "../../../../Utils/EmailConfig.js"
+import { useRef } from "react";
 import './style.css';
 
-// TODO: - https://www.emailjs.com/docs/examples/reactjs/
-// TODO: - https://medium.com/geekculture/how-to-send-emails-from-a-form-in-react-emailjs-6cdd21bb4190
 const ContactWindow = () => {
 
-	const [sendTo, setSendTo] = useState({
-		name: '',
-		reply_to: '',
-		message: ''
-	})
+	const form = useRef();
 
-	const handleChange = (e) => {
-		setSendTo({...sendTo, [e.target.name]: e.target.value});
-	}
-
-	const sendEmail = (e) => {
+	const onSubmit = (e) => {
 		e.preventDefault();
+		emailjs.sendForm(
+			EmailConfig.serviceId,
+			EmailConfig.templateId,
+			form.current,
+			EmailConfig.userId
+		)
+		.then(
+			alert("Successfully send the email!")
+		)
+		.catch((err) => {
+			console.log("Failed", err);
+		});
 	}
 	return (
 		<div>
-			<form>
-				<input type="text" name="name" placeholder="Your name"/>
-				<input type="text" name="reply_to" placeholder="Your email*"/>
+			<form ref={form} onSubmit={onSubmit}>
+				<input type="text" name="from_name" placeholder="Your name" />
+				<input type="text" name="reply_to" placeholder="Your email*" />
 				<textarea name="message"></textarea>
 				<button type="submit">Submit!</button>
 			</form>
