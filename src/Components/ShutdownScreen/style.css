@@ -1,3 +1,7 @@
+@font-face {
+  font-family: bitmaps;
+  src: url(../../font/slkscr.ttf);
+}
 
 .background {
   position: absolute;
@@ -6,4 +10,101 @@
   height: 100vh;
   width: 100vw;
   background-color: #000000;
+}
+
+.main-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.option-box {
+  margin-top: 20vh;
+  width: 50%;
+  height: 40%;
+  border: #c0bdb8 solid;
+}
+
+.list-container {
+  color: #ffffff;
+  font-family: bitmaps;
+  font-size: 1.5em;
+  font-weight: 300;
+}
+
+.list {
+  list-style: none;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.list li {
+  margin-bottom: 2vh;
+}
+
+.list li[is-selected="true"] {
+  margin-bottom: 2vh;
+  border-radius: 5px;
+  background-color: #d3d3d3;
+  color: #000000;
+}
+
+.title-bar {
+  height: 3.5vh;
+  margin-left: vw;
+  background-color: #c0bdb8;
+  color: #000000;
+  font-size: 3vh;
+  font-family: bitmaps;
+  font-weight: 950;
+  -webkit-font-smoothing: none;
+}
+
+.sub-title {
+  margin-left: 1vw;
+  font-size: 1.8vh;
+}
+
+.title-bar div {
+  margin-left: 1.5%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.power-btn {
+  position: absolute;
+  top: 85%;
+}
+
+.power-btn:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .option-box {
+    top: 30%;
+    width: 75%;
+    height: 50%;
+    border: #c0bdb8 solid;
+  }
+
+  .title-bar {
+    height: 4vh;
+    background-color: #c0bdb8;
+    color: #000000;
+    font-size: 3vh;
+    font-family: bitmaps;
+    font-weight: 900;
+    -webkit-font-smoothing: none;
+  }
+
+  .title-bar div {
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
 }
