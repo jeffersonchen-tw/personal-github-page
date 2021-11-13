@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { FaPowerOff } from "react-icons/fa";
 import "./style.css";
 
 const ShutdownScreen = () => {
+	const [selected, setSelected] = useState(0);
 	return (
 		<div className="background">
 			<div className="main-panel">
@@ -12,7 +14,7 @@ const ShutdownScreen = () => {
 					<div className="list-container">
 						<ul className="list">
 							<li>resume</li>
-							<li>clear cache</li>
+							<li>source code</li>
 							<li>send email</li>
 						</ul>
 					</div>
