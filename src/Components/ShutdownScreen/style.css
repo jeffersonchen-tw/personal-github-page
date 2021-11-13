@@ -39,10 +39,18 @@
 .list {
   list-style: none;
   padding-left: 3%;
+  padding-right: 3%;
 }
 
 .list li {
   margin-bottom: 2vh;
+}
+
+.list li[is-selected="true"] {
+  margin-bottom: 2vh;
+  border-radius: 5px;
+  background-color: #d3d3d3;
+  color: #000000;
 }
 
 .title-bar {
