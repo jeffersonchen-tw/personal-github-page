@@ -14,6 +14,7 @@ const WindowPanel = (props) => {
     zIndex: 5,
     backgroundColor: "#262a28",
     border: "2px solid #d3d3d3",
+    outline: "0.8px solid #000000"
   };
   const mobilePanelStyle = {
     position: "absolute",
@@ -23,6 +24,7 @@ const WindowPanel = (props) => {
     zIndex: 5,
     backgroundColor: "#262a28",
     border: "1.5px solid #d3d3d3",
+    outline: "0.5px solid #000000"
   };
 
   const detectWindow = () => {
